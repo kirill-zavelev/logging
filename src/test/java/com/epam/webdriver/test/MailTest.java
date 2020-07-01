@@ -36,7 +36,7 @@ public class MailTest extends BaseTest {
     }
 
     @Test(groups = {"smoke"})
-    public void deleteEmailFromDraft() {
+    public void deleteEmailFromDraftTest() {
         Email email = new Email();
 
         quickActionsPanelPage.openMailBox()
