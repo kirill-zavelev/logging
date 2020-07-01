@@ -1,5 +1,7 @@
 package com.epam.webdriver.decorator;
 
+import com.epam.reportportal.testng.ReportPortalTestNGListener;
+import com.epam.webdriver.utils.TestListener;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -8,11 +10,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Listeners;
 
-import com.epam.reportportal.testng.ReportPortalTestNGListener;
-import com.google.common.io.BaseEncoding;
 import java.util.List;
 import java.util.Set;
 
+@Listeners({ReportPortalTestNGListener.class, TestListener.class})
 public class DriverDecorator implements WebDriver {
 
     private static final Logger LOGGER = LogManager.getLogger("logger");

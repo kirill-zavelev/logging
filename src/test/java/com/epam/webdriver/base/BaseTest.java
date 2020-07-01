@@ -1,6 +1,7 @@
 package com.epam.webdriver.base;
 
 import com.epam.reportportal.testng.ReportPortalTestNGListener;
+import com.epam.webdriver.decorator.DriverDecorator;
 import com.epam.webdriver.driver.DriverSingleton;
 import com.epam.webdriver.factory.EmailFactory;
 import com.epam.webdriver.page.auth.LoginPage;
@@ -32,14 +33,17 @@ public class BaseTest {
     protected MailCreationPage mailCreationPage;
     protected DraftPage draftPage;
 
+    private DriverDecorator driver;
+
     @BeforeMethod
     public void setUpBrowser() {
         LOGGER.info("Test started");
+        driver = DriverSingleton.getDriver();
 
-        loginPage = new LoginPage();
-        mailCreationPage = new MailCreationPage();
-        draftPage = new DraftPage();
-        inboxPage = new InboxPage();
+        loginPage = new LoginPage(driver);
+        mailCreationPage = new MailCreationPage(driver);
+        draftPage = new DraftPage(driver);
+        inboxPage = new InboxPage(driver);
 
         quickActionsPanelPage = loginPage
                 .openPage(BASE_URL)

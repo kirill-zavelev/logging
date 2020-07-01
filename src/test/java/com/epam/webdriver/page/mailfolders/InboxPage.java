@@ -1,5 +1,6 @@
 package com.epam.webdriver.page.mailfolders;
 
+import com.epam.webdriver.decorator.DriverDecorator;
 import com.epam.webdriver.page.BasePage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -15,11 +16,15 @@ public class InboxPage extends BasePage {
     @FindBy(xpath = "//a[@href='#sent']")
     private WebElement sendFolderBtn;
 
+    public InboxPage(DriverDecorator driver) {
+        super(driver);
+    }
+
     public DraftPage openDraftsFolder() {
         waitForElementToBeClickable(draftFolderBtn);
         draftFolderBtn.click();
 
-        return new DraftPage();
+        return new DraftPage(driver);
     }
 
     public InboxPage openSendFolder() {

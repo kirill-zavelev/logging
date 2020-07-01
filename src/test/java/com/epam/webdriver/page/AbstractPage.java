@@ -1,7 +1,6 @@
 package com.epam.webdriver.page;
 
 import com.epam.webdriver.decorator.DriverDecorator;
-import com.epam.webdriver.driver.DriverSingleton;
 import com.epam.webdriver.utils.JsOperations;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
@@ -18,16 +17,16 @@ public abstract class AbstractPage {
     private static final int TIME_OUT_IN_SECONDS = 10;
 
     protected final WebDriverWait wait;
+    protected final DriverDecorator driver;
     protected JsOperations jsOperations;
-    protected DriverDecorator driver;
 
-    protected AbstractPage() {
-        this.driver = DriverSingleton.getDriver();
+    protected AbstractPage(DriverDecorator driver) {
+        this.driver = driver;
         this.jsOperations = new JsOperations(driver);
         this.wait = new WebDriverWait(driver.getWebDriver(), TIME_OUT_IN_SECONDS);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(TIME_OUT_IN_SECONDS, TimeUnit.SECONDS);
-        PageFactory.initElements(driver.getWebDriver(), this);
+        PageFactory.initElements(driver, this);
     }
 
     protected WebElement waitForElementToBeClickable(WebElement element) {

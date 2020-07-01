@@ -1,5 +1,6 @@
 package com.epam.webdriver.page.auth;
 
+import com.epam.webdriver.decorator.DriverDecorator;
 import com.epam.webdriver.page.AbstractPage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -21,6 +22,10 @@ public class LoginPage extends AbstractPage {
 
     @FindBy(className = "passp-footer")
     private WebElement footer;
+
+    public LoginPage(DriverDecorator driver) {
+        super(driver);
+    }
 
     public LoginPage openPage(String url) {
         driver.get(url);
@@ -61,7 +66,7 @@ public class LoginPage extends AbstractPage {
         setPasswordField(password);
         clickPassword();
 
-        return new StartPage();
+        return new StartPage(driver);
     }
 
     public boolean isPasswordInputDisplayed() {
