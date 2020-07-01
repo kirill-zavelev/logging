@@ -1,9 +1,7 @@
 package com.epam.webdriver.page.mailactions;
 
-import com.epam.webdriver.decorator.DriverDecorator;
 import com.epam.webdriver.model.Email;
 import com.epam.webdriver.page.AbstractPage;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -25,10 +23,6 @@ public class MailCreationPage extends AbstractPage {
 
     @FindBy(xpath = "//button[contains(@class, 'Button_action')]")
     private List<WebElement> sendEmailBtn;
-
-    public MailCreationPage(DriverDecorator driver) {
-        super(driver);
-    }
 
     public MailCreationPage fillEmail(Email email) {
         waitForElementToBeClickable(sendTo);

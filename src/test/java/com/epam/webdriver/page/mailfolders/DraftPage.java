@@ -1,10 +1,8 @@
 package com.epam.webdriver.page.mailfolders;
 
-import com.epam.webdriver.decorator.DriverDecorator;
-import com.epam.webdriver.page.BasePage;
 import com.epam.webdriver.model.Email;
+import com.epam.webdriver.page.BasePage;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -21,10 +19,6 @@ public class DraftPage extends BasePage {
     @FindBy(xpath = "//a[@href='#draft']")
     private WebElement draftFolderBtn;
 
-    public DraftPage(DriverDecorator driver) {
-        super(driver);
-    }
-
     public DraftPage openEmail(Email email) {
         waitForElementToBeClickable(draftFolderBtn);
         findEmailPreview(emailPreviews, email).click();
@@ -35,7 +29,6 @@ public class DraftPage extends BasePage {
     public DraftPage checkEmailCheckbox(Email email) {
         By emailCheckMark = By.cssSelector("label rect");
         WebElement checkMark = findEmailPreview(emailPreviews, email).findElement(emailCheckMark);
-        waitForElementToBeClickable(checkMark);
         callContextMenu(checkMark);
 
         return this;

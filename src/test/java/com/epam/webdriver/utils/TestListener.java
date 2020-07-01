@@ -5,13 +5,13 @@ import org.apache.logging.log4j.Logger;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
-import org.testng.annotations.Listeners;
 
 public class TestListener implements ITestListener {
 
     private static final Logger LOGGER = LogManager.getLogger("logger");
 
     private static final String TEST_STARTED_MESSAGE = " is started";
+    private static final String TEST_FINISHED_MESSAGE = " is finished";
     private static final String TEST_PASSED_MESSAGE = " is passed";
     private static final String TEST_SKIPPED_MESSAGE = " is skipped";
     private static final String TEST_FAILED_MESSAGE = " is failed";
@@ -26,19 +26,19 @@ public class TestListener implements ITestListener {
 
     public void onTestSkipped(ITestResult result) {
         LOGGER.warn(TEST_SKIPPED_MESSAGE);
-        ScreenShotCreator.saveScreenshot();
+//        ScreenShotCreator.saveScreenshot();
     }
 
     public void onTestFailure(ITestResult result) {
         LOGGER.error(result.getName() + TEST_FAILED_MESSAGE);
-        ScreenShotCreator.saveScreenshot();
+//        ScreenShotCreator.saveScreenshot();
     }
 
     public void onStart(ITestContext context) {
-
+        LOGGER.info(context.getName() + TEST_STARTED_MESSAGE);
     }
 
     public void onFinish(ITestContext context) {
-
+        LOGGER.info(context.getName() + TEST_FINISHED_MESSAGE);
     }
 }

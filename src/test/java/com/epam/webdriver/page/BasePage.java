@@ -1,10 +1,8 @@
 package com.epam.webdriver.page;
 
-import com.epam.webdriver.decorator.DriverDecorator;
 import com.epam.webdriver.model.Email;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -24,10 +22,6 @@ public abstract class BasePage extends AbstractPage {
     private static final By RECIPIENT = By.className("js-message-snippet-sender");
     private static final By SUBJECT = By.className("mail-MessageSnippet-Item_subject");
     private static final By EMAIL_BODY = By.className("js-message-snippet-firstline");
-
-    protected BasePage(DriverDecorator driver) {
-        super(driver);
-    }
 
     public WebElement findEmailPreview(List<WebElement> emailPreviews, Email email) {
         driver.navigate().refresh();

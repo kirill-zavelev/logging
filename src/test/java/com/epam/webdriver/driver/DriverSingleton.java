@@ -14,19 +14,15 @@ public class DriverSingleton {
 
     public static DriverDecorator getDriver() {
         if (null == driver) {
-            switch (PropertyLoader.loadProperty("browser")) {
-                case  "firefox": {
-                    WebDriverManager.firefoxdriver().setup();
-                    driver = new DriverDecorator(new FirefoxDriver());
-                    break;
-                }
-                default: {
-                    WebDriverManager.chromedriver().setup();
-                    driver = new DriverDecorator(new ChromeDriver());
-                }
+            if ("firefox".equals(PropertyLoader.loadProperty("browser"))) {
+                WebDriverManager.firefoxdriver().setup();
+                driver = new DriverDecorator(new FirefoxDriver());
+            } else {
+                WebDriverManager.chromedriver().setup();
+                driver = new DriverDecorator(new ChromeDriver());
             }
-            driver.manage().window().maximize();
         }
+
         return driver;
     }
 
