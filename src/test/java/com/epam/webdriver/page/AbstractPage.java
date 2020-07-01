@@ -57,6 +57,6 @@ public abstract class AbstractPage {
 
     public void callContextMenu(WebElement element) {
         Actions actions = new Actions(driver);
-        actions.contextClick(element).perform();
+        actions.click(element).perform();
     }
 }

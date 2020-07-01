@@ -10,7 +10,7 @@ public class EmailWithEmptySubjectCreator implements EmailCreator {
         Email emailWithEmptySubject = new Email();
 
         emailWithEmptySubject.setRecipient(PropertyLoader.loadProperty("user.send.to"));
-        emailWithEmptySubject.setSubject("");
+        emailWithEmptySubject.setSubject("(Без темы)");
         emailWithEmptySubject.setBody(emailWithEmptySubject.getBody());
 
         return emailWithEmptySubject;

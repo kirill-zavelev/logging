@@ -35,25 +35,25 @@ public class MailTest extends BaseTest {
         Assert.assertEquals(actualEmail, expectedEmail, "Incorrect email data. Please mail parameters.");
     }
 
-//    @Test(groups = {"smoke"})
-//    public void deleteEmailFromDraft() {
-//        Email email = new Email();
-//
-//        quickActionsPanelPage.openMailBox()
-//                .openMailCreationForm();
-//
-//        mailCreationPage.fillEmail(email)
-//                .sendMailAsDraft();
-//
-//        inboxPage.openDraftsFolder();
-//
-//        boolean isEmailDeleted = draftPage
-//                .checkEmailCheckbox(email)
-//                .clickDeleteEmail()
-//                .isEmailDeleted(email);
-//
-//        Assert.assertTrue(isEmailDeleted, "Email was not deleted from inbox.");
-//    }
+    @Test(groups = {"smoke"})
+    public void deleteEmailFromDraft() {
+        Email email = new Email();
+
+        quickActionsPanelPage.openMailBox()
+                .openMailCreationForm();
+
+        mailCreationPage.fillEmail(email)
+                .sendMailAsDraft();
+
+        inboxPage.openDraftsFolder();
+
+        boolean isEmailDeleted = draftPage
+                .checkEmailCheckbox(email)
+                .clickDeleteEmail()
+                .isEmailDeleted(email);
+
+        Assert.assertTrue(isEmailDeleted, "Email was not deleted from inbox.");
+    }
 
     @Test(groups = {"regression"})
     public void updateEmailTest() {

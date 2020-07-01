@@ -10,7 +10,7 @@ import java.util.List;
 
 public class DraftPage extends BasePage {
 
-    @FindBy(xpath = "//*[@data-id='2']")
+    @FindBy(xpath = "//div[contains(@title, '(Delete)')]")
     private WebElement deleteEmailBtn;
 
     @FindBy(xpath = "//div[@data-key='box=messages-item-box']")
